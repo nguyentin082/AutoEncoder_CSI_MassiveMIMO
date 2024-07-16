@@ -1,0 +1,1352 @@
+root@ae:~/AE# python3 train128.py
+2024-07-04 17:49:10.171705: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:479] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-07-04 17:49:10.202985: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:10575] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-07-04 17:49:10.203035: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1442] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-07-04 17:49:10.222396: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-07-04 17:49:11.206581: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-07-04 17:49:12.259945: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-07-04 17:49:12.304692: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-07-04 17:49:12.305084: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-07-04 17:49:12.308010: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-07-04 17:49:12.308308: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-07-04 17:49:12.308581: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-07-04 17:49:13.640624: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-07-04 17:49:13.640960: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-07-04 17:49:13.641262: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-07-04 17:49:13.641507: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1928] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 22079 MB memory:  -> device: 0, name: GRID P40-24Q, pci bus id: 0000:02:01.0, compute capability: 6.1
+Number of devices: 1
+Model: "encoder"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ input_layer (InputLayer)             │ (None, 64, 160, 2)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d (Conv2D)                      │ (None, 32, 80, 8)           │             152 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization                  │ (None, 32, 80, 8)           │              32 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu (ReLU)                         │ (None, 32, 80, 8)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_1 (Conv2D)                    │ (None, 16, 40, 16)          │           1,168 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_1                │ (None, 16, 40, 16)          │              64 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu_1 (ReLU)                       │ (None, 16, 40, 16)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_2 (Conv2D)                    │ (None, 8, 20, 32)           │           4,640 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_2                │ (None, 8, 20, 32)           │             128 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu_2 (ReLU)                       │ (None, 8, 20, 32)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_3 (Conv2D)                    │ (None, 4, 10, 64)           │          18,496 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_3                │ (None, 4, 10, 64)           │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu_3 (ReLU)                       │ (None, 4, 10, 64)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_4 (Conv2D)                    │ (None, 2, 5, 128)           │          73,856 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_4                │ (None, 2, 5, 128)           │             512 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu_4 (ReLU)                       │ (None, 2, 5, 128)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ flatten (Flatten)                    │ (None, 1280)                │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense (Dense)                        │ (None, 128)                 │         163,968 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ activation (Activation)              │ (None, 128)                 │               0 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 263,272 (1.00 MB)
+ Trainable params: 262,776 (1.00 MB)
+ Non-trainable params: 496 (1.94 KB)
+Model: "decoder"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ input_layer_1 (InputLayer)           │ (None, 128)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 1280)                │         165,120 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ reshape (Reshape)                    │ (None, 2, 5, 128)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_transpose (Conv2DTranspose)   │ (None, 4, 10, 128)          │         147,584 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_5                │ (None, 4, 10, 128)          │             512 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu_5 (ReLU)                       │ (None, 4, 10, 128)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_transpose_1 (Conv2DTranspose) │ (None, 8, 20, 64)           │          73,792 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_6                │ (None, 8, 20, 64)           │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu_6 (ReLU)                       │ (None, 8, 20, 64)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_transpose_2 (Conv2DTranspose) │ (None, 16, 40, 32)          │          18,464 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_7                │ (None, 16, 40, 32)          │             128 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu_7 (ReLU)                       │ (None, 16, 40, 32)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_transpose_3 (Conv2DTranspose) │ (None, 32, 80, 16)          │           4,624 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_8                │ (None, 32, 80, 16)          │              64 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu_8 (ReLU)                       │ (None, 32, 80, 16)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_transpose_4 (Conv2DTranspose) │ (None, 64, 160, 8)          │           1,160 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_9                │ (None, 64, 160, 8)          │              32 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu_9 (ReLU)                       │ (None, 64, 160, 8)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_transpose_5 (Conv2DTranspose) │ (None, 64, 160, 2)          │             146 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 411,882 (1.57 MB)
+ Trainable params: 411,386 (1.57 MB)
+ Non-trainable params: 496 (1.94 KB)
+Model: "autoencoder"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ input_layer_4 (InputLayer)           │ (None, 64, 160, 2)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ encoder (Functional)                 │ (None, 128)                 │         263,272 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ decoder (Functional)                 │ (None, 64, 160, 2)          │         411,882 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 675,154 (2.58 MB)
+ Trainable params: 674,162 (2.57 MB)
+ Non-trainable params: 992 (3.88 KB)
+
+H_train_real:  (40000, 64, 160, 2)
+0.9192816
+
+H_val_real:  (5000, 64, 160, 2)
+0.491622
+2024-07-04 17:50:23.239228: W external/local_tsl/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 3276800000 exceeds 10% of free system memory.
+2024-07-04 17:50:32.793429: W external/local_tsl/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 3276800000 exceeds 10% of free system memory.
+2024-07-04 17:50:35.533115: W external/local_tsl/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 3276800000 exceeds 10% of free system memory.
+2024-07-04 17:50:37.681898: W external/local_tsl/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 3276800000 exceeds 10% of free system memory.
+2024-07-04 17:50:40.091587: W external/local_tsl/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 3276800000 exceeds 10% of free system memory.
+Epoch 1/100
+2024-07-04 17:50:54.202520: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:465] Loaded cuDNN version 8902624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.5002 - loss: 0.6019 - psnr: 2.29242024-07-04 17:51:22.492668: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:51:22.492865: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:51:28.109835: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:51:28.110123: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 44s 49ms/step - accuracy: 0.5002 - loss: 0.6017 - psnr: 2.2939 - val_accuracy: 0.5006 - val_loss: 0.5022 - val_psnr: 2.9909 - learning_rate: 1.0000e-04
+Epoch 2/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.5023 - loss: 0.5012 - psnr: 2.99952024-07-04 17:51:53.495404: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:51:53.495584: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:51:54.624023: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:51:54.624197: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.5023 - loss: 0.5012 - psnr: 2.9995 - val_accuracy: 0.5142 - val_loss: 0.4988 - val_psnr: 3.0212 - learning_rate: 1.0000e-04
+Epoch 3/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.5601 - loss: 0.4706 - psnr: 3.30562024-07-04 17:52:20.162623: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:52:20.162807: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:52:21.315118: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:52:21.315305: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.5603 - loss: 0.4704 - psnr: 3.3072 - val_accuracy: 0.6965 - val_loss: 0.3484 - val_psnr: 4.7018 - learning_rate: 1.0000e-04
+Epoch 4/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7040 - loss: 0.3258 - psnr: 5.02882024-07-04 17:52:46.408902: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:52:46.409068: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7041 - loss: 0.3257 - psnr: 5.02922024-07-04 17:52:47.560263: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:52:47.560482: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.7041 - loss: 0.3257 - psnr: 5.0295 - val_accuracy: 0.7208 - val_loss: 0.3032 - val_psnr: 5.3856 - learning_rate: 1.0000e-04
+Epoch 5/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7203 - loss: 0.3002 - psnr: 5.44022024-07-04 17:53:12.921535: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:53:12.921724: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:53:14.090475: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:53:14.090654: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.7203 - loss: 0.3001 - psnr: 5.4403 - val_accuracy: 0.7281 - val_loss: 0.2910 - val_psnr: 5.5904 - learning_rate: 1.0000e-04
+Epoch 6/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.7277 - loss: 0.2901 - psnr: 5.60702024-07-04 17:53:39.952881: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:53:39.953083: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.7277 - loss: 0.2901 - psnr: 5.60712024-07-04 17:53:41.155078: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:53:41.155355: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 43ms/step - accuracy: 0.7277 - loss: 0.2901 - psnr: 5.6071 - val_accuracy: 0.7380 - val_loss: 0.2812 - val_psnr: 5.7479 - learning_rate: 1.0000e-04
+Epoch 7/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7418 - loss: 0.2769 - psnr: 5.80462024-07-04 17:54:06.157664: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:54:06.157856: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7419 - loss: 0.2769 - psnr: 5.80492024-07-04 17:54:07.343857: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:54:07.344097: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 41ms/step - accuracy: 0.7419 - loss: 0.2769 - psnr: 5.8051 - val_accuracy: 0.7594 - val_loss: 0.2539 - val_psnr: 6.1672 - learning_rate: 1.0000e-04
+Epoch 8/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7605 - loss: 0.2514 - psnr: 6.21242024-07-04 17:54:32.762226: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:54:32.762419: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:54:33.867868: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:54:33.868079: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.7605 - loss: 0.2514 - psnr: 6.2127 - val_accuracy: 0.7720 - val_loss: 0.2366 - val_psnr: 6.4853 - learning_rate: 1.0000e-04
+Epoch 9/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7716 - loss: 0.2363 - psnr: 6.48722024-07-04 17:54:59.360404: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:54:59.360578: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7716 - loss: 0.2363 - psnr: 6.48742024-07-04 17:55:00.475899: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:55:00.476048: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.7716 - loss: 0.2363 - psnr: 6.4875 - val_accuracy: 0.7806 - val_loss: 0.2250 - val_psnr: 6.7016 - learning_rate: 1.0000e-04
+Epoch 10/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7797 - loss: 0.2252 - psnr: 6.69802024-07-04 17:55:25.971745: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:55:25.971907: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:55:27.126770: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:55:27.126953: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.7797 - loss: 0.2252 - psnr: 6.6981 - val_accuracy: 0.7862 - val_loss: 0.2170 - val_psnr: 6.8578 - learning_rate: 1.0000e-04
+Epoch 11/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7850 - loss: 0.2181 - psnr: 6.83262024-07-04 17:55:52.238504: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:55:52.238665: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:55:53.398206: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:55:53.398383: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.7850 - loss: 0.2181 - psnr: 6.8326 - val_accuracy: 0.7915 - val_loss: 0.2097 - val_psnr: 7.0119 - learning_rate: 1.0000e-04
+Epoch 12/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7889 - loss: 0.2130 - psnr: 6.94012024-07-04 17:56:18.853416: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:56:18.853599: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:56:20.002190: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:56:20.002381: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.7889 - loss: 0.2130 - psnr: 6.9402 - val_accuracy: 0.7949 - val_loss: 0.2052 - val_psnr: 7.1058 - learning_rate: 1.0000e-04
+Epoch 13/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7926 - loss: 0.2079 - psnr: 7.04132024-07-04 17:56:45.237355: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:56:45.237532: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:56:46.411820: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:56:46.412009: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.7926 - loss: 0.2079 - psnr: 7.0414 - val_accuracy: 0.7981 - val_loss: 0.2010 - val_psnr: 7.1952 - learning_rate: 1.0000e-04
+Epoch 14/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7953 - loss: 0.2045 - psnr: 7.11232024-07-04 17:57:11.799619: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:57:11.799795: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:57:12.962880: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:57:12.963056: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.7953 - loss: 0.2045 - psnr: 7.1123 - val_accuracy: 0.7991 - val_loss: 0.1995 - val_psnr: 7.2244 - learning_rate: 1.0000e-04
+Epoch 15/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.7972 - loss: 0.2018 - psnr: 7.17102024-07-04 17:57:38.543587: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:57:38.543750: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:57:39.720299: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:57:39.720470: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.7972 - loss: 0.2018 - psnr: 7.1710 - val_accuracy: 0.8028 - val_loss: 0.1948 - val_psnr: 7.3294 - learning_rate: 1.0000e-04
+Epoch 16/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7993 - loss: 0.1989 - psnr: 7.22802024-07-04 17:58:04.980351: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:58:04.980526: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.7993 - loss: 0.1989 - psnr: 7.22802024-07-04 17:58:06.184743: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:58:06.184929: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.7993 - loss: 0.1989 - psnr: 7.2280 - val_accuracy: 0.8032 - val_loss: 0.1943 - val_psnr: 7.3366 - learning_rate: 1.0000e-04
+Epoch 17/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8004 - loss: 0.1976 - psnr: 7.25492024-07-04 17:58:31.850042: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:58:31.850217: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8004 - loss: 0.1976 - psnr: 7.25492024-07-04 17:58:33.008454: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:58:33.008654: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8004 - loss: 0.1976 - psnr: 7.2549 - val_accuracy: 0.8052 - val_loss: 0.1916 - val_psnr: 7.3977 - learning_rate: 1.0000e-04
+Epoch 18/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8019 - loss: 0.1954 - psnr: 7.30652024-07-04 17:58:58.618017: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:58:58.618202: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8019 - loss: 0.1954 - psnr: 7.30652024-07-04 17:58:59.801806: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:58:59.802008: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8019 - loss: 0.1954 - psnr: 7.3065 - val_accuracy: 0.8045 - val_loss: 0.1921 - val_psnr: 7.3797 - learning_rate: 1.0000e-04
+Epoch 19/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8026 - loss: 0.1944 - psnr: 7.32442024-07-04 17:59:25.161988: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:59:25.162421: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 17:59:26.357128: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:59:26.357307: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8026 - loss: 0.1944 - psnr: 7.3245 - val_accuracy: 0.8071 - val_loss: 0.1889 - val_psnr: 7.4562 - learning_rate: 1.0000e-04
+Epoch 20/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 39ms/step - accuracy: 0.8038 - loss: 0.1929 - psnr: 7.35902024-07-04 17:59:51.214979: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:59:51.215200: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 39ms/step - accuracy: 0.8038 - loss: 0.1929 - psnr: 7.35902024-07-04 17:59:52.548887: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 17:59:52.549083: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8038 - loss: 0.1929 - psnr: 7.3590 - val_accuracy: 0.8082 - val_loss: 0.1876 - val_psnr: 7.4875 - learning_rate: 1.0000e-04
+Epoch 21/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8051 - loss: 0.1913 - psnr: 7.39172024-07-04 18:00:17.645155: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:00:17.645333: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:00:18.794702: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:00:18.794873: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8051 - loss: 0.1913 - psnr: 7.3916 - val_accuracy: 0.8080 - val_loss: 0.1878 - val_psnr: 7.4787 - learning_rate: 1.0000e-04
+Epoch 22/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8055 - loss: 0.1906 - psnr: 7.40662024-07-04 18:00:44.442594: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:00:44.442826: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:00:45.623736: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:00:45.623918: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 43ms/step - accuracy: 0.8055 - loss: 0.1906 - psnr: 7.4066 - val_accuracy: 0.8095 - val_loss: 0.1858 - val_psnr: 7.5270 - learning_rate: 1.0000e-04
+Epoch 23/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8059 - loss: 0.1902 - psnr: 7.41582024-07-04 18:01:10.999656: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:01:10.999866: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:01:12.175799: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:01:12.176008: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8059 - loss: 0.1902 - psnr: 7.4159 - val_accuracy: 0.8100 - val_loss: 0.1851 - val_psnr: 7.5415 - learning_rate: 1.0000e-04
+Epoch 24/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8070 - loss: 0.1888 - psnr: 7.44552024-07-04 18:01:37.412374: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:01:37.412966: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8070 - loss: 0.1888 - psnr: 7.44552024-07-04 18:01:38.615162: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:01:38.615340: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8070 - loss: 0.1888 - psnr: 7.4455 - val_accuracy: 0.8098 - val_loss: 0.1853 - val_psnr: 7.5340 - learning_rate: 1.0000e-04
+Epoch 25/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8075 - loss: 0.1880 - psnr: 7.46652024-07-04 18:02:04.152213: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:02:04.152376: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8075 - loss: 0.1880 - psnr: 7.46652024-07-04 18:02:05.269292: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:02:05.269456: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8075 - loss: 0.1880 - psnr: 7.4665 - val_accuracy: 0.8110 - val_loss: 0.1838 - val_psnr: 7.5701 - learning_rate: 1.0000e-04
+Epoch 26/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8081 - loss: 0.1873 - psnr: 7.47982024-07-04 18:02:30.619041: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:02:30.619193: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:02:31.754364: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:02:31.754508: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8081 - loss: 0.1873 - psnr: 7.4798 - val_accuracy: 0.8116 - val_loss: 0.1830 - val_psnr: 7.5891 - learning_rate: 1.0000e-04
+Epoch 27/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8082 - loss: 0.1869 - psnr: 7.48982024-07-04 18:02:57.113463: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:02:57.113662: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8082 - loss: 0.1869 - psnr: 7.48992024-07-04 18:02:58.266866: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:02:58.267047: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8082 - loss: 0.1869 - psnr: 7.4899 - val_accuracy: 0.8121 - val_loss: 0.1825 - val_psnr: 7.6009 - learning_rate: 1.0000e-04
+Epoch 28/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8093 - loss: 0.1858 - psnr: 7.51722024-07-04 18:03:23.567350: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:03:23.567523: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8093 - loss: 0.1858 - psnr: 7.51722024-07-04 18:03:24.683138: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:03:24.683310: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8093 - loss: 0.1858 - psnr: 7.5172 - val_accuracy: 0.8119 - val_loss: 0.1827 - val_psnr: 7.5942 - learning_rate: 1.0000e-04
+Epoch 29/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8099 - loss: 0.1847 - psnr: 7.54072024-07-04 18:03:50.146893: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:03:50.147043: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:03:51.319753: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:03:51.319968: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8099 - loss: 0.1847 - psnr: 7.5407 - val_accuracy: 0.8087 - val_loss: 0.1864 - val_psnr: 7.4922 - learning_rate: 1.0000e-04
+Epoch 30/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8100 - loss: 0.1847 - psnr: 7.54172024-07-04 18:04:16.344924: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:04:16.345117: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8100 - loss: 0.1847 - psnr: 7.54172024-07-04 18:04:17.499681: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:04:17.499907: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 41ms/step - accuracy: 0.8100 - loss: 0.1847 - psnr: 7.5418 - val_accuracy: 0.8140 - val_loss: 0.1799 - val_psnr: 7.6652 - learning_rate: 1.0000e-04
+Epoch 31/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 39ms/step - accuracy: 0.8112 - loss: 0.1833 - psnr: 7.57362024-07-04 18:04:42.213405: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:04:42.213572: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 39ms/step - accuracy: 0.8112 - loss: 0.1833 - psnr: 7.57362024-07-04 18:04:43.364199: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:04:43.364366: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 41ms/step - accuracy: 0.8112 - loss: 0.1833 - psnr: 7.5736 - val_accuracy: 0.8141 - val_loss: 0.1799 - val_psnr: 7.6642 - learning_rate: 1.0000e-04
+Epoch 32/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8111 - loss: 0.1836 - psnr: 7.57072024-07-04 18:05:08.403130: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:05:08.403307: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8111 - loss: 0.1836 - psnr: 7.57072024-07-04 18:05:09.588905: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:05:09.589102: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8111 - loss: 0.1836 - psnr: 7.5707 - val_accuracy: 0.8143 - val_loss: 0.1797 - val_psnr: 7.6675 - learning_rate: 1.0000e-04
+Epoch 33/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8115 - loss: 0.1828 - psnr: 7.58512024-07-04 18:05:35.077471: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:05:35.077673: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8115 - loss: 0.1828 - psnr: 7.58512024-07-04 18:05:36.215156: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:05:36.215405: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8115 - loss: 0.1828 - psnr: 7.5851 - val_accuracy: 0.8134 - val_loss: 0.1806 - val_psnr: 7.6408 - learning_rate: 1.0000e-04
+Epoch 34/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8120 - loss: 0.1822 - psnr: 7.60142024-07-04 18:06:01.787588: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:06:01.787844: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8120 - loss: 0.1822 - psnr: 7.60142024-07-04 18:06:02.974859: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:06:02.975016: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8120 - loss: 0.1822 - psnr: 7.6014 - val_accuracy: 0.8148 - val_loss: 0.1790 - val_psnr: 7.6853 - learning_rate: 1.0000e-04
+Epoch 35/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8122 - loss: 0.1820 - psnr: 7.60422024-07-04 18:06:28.119231: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:06:28.119426: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8122 - loss: 0.1820 - psnr: 7.60422024-07-04 18:06:29.305823: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:06:29.306057: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8122 - loss: 0.1820 - psnr: 7.6042 - val_accuracy: 0.8146 - val_loss: 0.1790 - val_psnr: 7.6796 - learning_rate: 1.0000e-04
+Epoch 36/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8124 - loss: 0.1815 - psnr: 7.61712024-07-04 18:06:54.363884: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:06:54.364064: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8124 - loss: 0.1815 - psnr: 7.61712024-07-04 18:06:55.516440: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:06:55.516628: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8124 - loss: 0.1815 - psnr: 7.6171 - val_accuracy: 0.8154 - val_loss: 0.1781 - val_psnr: 7.7054 - learning_rate: 1.0000e-04
+Epoch 37/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8132 - loss: 0.1808 - psnr: 7.63282024-07-04 18:07:20.774218: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:07:20.774444: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:07:21.894766: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:07:21.894973: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8132 - loss: 0.1808 - psnr: 7.6328 - val_accuracy: 0.8154 - val_loss: 0.1782 - val_psnr: 7.7013 - learning_rate: 1.0000e-04
+Epoch 38/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8130 - loss: 0.1809 - psnr: 7.63312024-07-04 18:07:47.438153: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:07:47.438371: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8130 - loss: 0.1809 - psnr: 7.63312024-07-04 18:07:48.611454: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:07:48.611658: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8131 - loss: 0.1808 - psnr: 7.6332 - val_accuracy: 0.8162 - val_loss: 0.1771 - val_psnr: 7.7283 - learning_rate: 1.0000e-04
+Epoch 39/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8145 - loss: 0.1792 - psnr: 7.67212024-07-04 18:08:13.880679: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:08:13.880813: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8145 - loss: 0.1792 - psnr: 7.67212024-07-04 18:08:15.058767: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:08:15.058932: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8145 - loss: 0.1792 - psnr: 7.6720 - val_accuracy: 0.8173 - val_loss: 0.1758 - val_psnr: 7.7640 - learning_rate: 1.0000e-04
+Epoch 40/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8143 - loss: 0.1795 - psnr: 7.66202024-07-04 18:08:40.503245: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:08:40.503377: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:08:41.625505: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:08:41.625693: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8143 - loss: 0.1795 - psnr: 7.6620 - val_accuracy: 0.8174 - val_loss: 0.1759 - val_psnr: 7.7614 - learning_rate: 1.0000e-04
+Epoch 41/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8142 - loss: 0.1792 - psnr: 7.67062024-07-04 18:09:06.844303: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:09:06.844517: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8142 - loss: 0.1792 - psnr: 7.67062024-07-04 18:09:08.097866: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:09:08.098071: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8142 - loss: 0.1792 - psnr: 7.6706 - val_accuracy: 0.8172 - val_loss: 0.1760 - val_psnr: 7.7585 - learning_rate: 1.0000e-04
+Epoch 42/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8146 - loss: 0.1790 - psnr: 7.67802024-07-04 18:09:33.479268: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:09:33.479478: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8146 - loss: 0.1790 - psnr: 7.67802024-07-04 18:09:34.634575: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:09:34.634756: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8146 - loss: 0.1790 - psnr: 7.6780 - val_accuracy: 0.8175 - val_loss: 0.1756 - val_psnr: 7.7675 - learning_rate: 1.0000e-04
+Epoch 43/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8149 - loss: 0.1787 - psnr: 7.68442024-07-04 18:10:00.061631: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:10:00.061824: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8149 - loss: 0.1787 - psnr: 7.68452024-07-04 18:10:01.216247: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:10:01.216432: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8149 - loss: 0.1787 - psnr: 7.6845 - val_accuracy: 0.8176 - val_loss: 0.1754 - val_psnr: 7.7718 - learning_rate: 1.0000e-04
+Epoch 44/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8152 - loss: 0.1784 - psnr: 7.69042024-07-04 18:10:26.426451: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:10:26.426627: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8152 - loss: 0.1784 - psnr: 7.69042024-07-04 18:10:27.565713: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:10:27.565900: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8152 - loss: 0.1784 - psnr: 7.6904 - val_accuracy: 0.8184 - val_loss: 0.1745 - val_psnr: 7.7957 - learning_rate: 1.0000e-04
+Epoch 45/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8157 - loss: 0.1776 - psnr: 7.71102024-07-04 18:10:52.836511: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:10:52.836678: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8157 - loss: 0.1776 - psnr: 7.71102024-07-04 18:10:54.231123: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:10:54.231329: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8157 - loss: 0.1776 - psnr: 7.7110 - val_accuracy: 0.8187 - val_loss: 0.1742 - val_psnr: 7.8023 - learning_rate: 1.0000e-04
+Epoch 46/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8162 - loss: 0.1767 - psnr: 7.73362024-07-04 18:11:19.850155: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:11:19.850341: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8162 - loss: 0.1767 - psnr: 7.73352024-07-04 18:11:21.021921: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:11:21.022116: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 43ms/step - accuracy: 0.8162 - loss: 0.1767 - psnr: 7.7335 - val_accuracy: 0.8187 - val_loss: 0.1741 - val_psnr: 7.8042 - learning_rate: 1.0000e-04
+Epoch 47/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8162 - loss: 0.1773 - psnr: 7.72182024-07-04 18:11:46.477613: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:11:46.477839: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:11:47.700052: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:11:47.700261: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8162 - loss: 0.1773 - psnr: 7.7219 - val_accuracy: 0.8169 - val_loss: 0.1765 - val_psnr: 7.7382 - learning_rate: 1.0000e-04
+Epoch 48/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8170 - loss: 0.1759 - psnr: 7.75062024-07-04 18:12:12.888228: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:12:12.888439: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:12:14.076744: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:12:14.076947: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8170 - loss: 0.1759 - psnr: 7.7506 - val_accuracy: 0.8185 - val_loss: 0.1745 - val_psnr: 7.7893 - learning_rate: 1.0000e-04
+Epoch 49/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8166 - loss: 0.1766 - psnr: 7.73562024-07-04 18:12:39.384721: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:12:39.384896: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8166 - loss: 0.1766 - psnr: 7.73562024-07-04 18:12:40.586114: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:12:40.586309: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8166 - loss: 0.1766 - psnr: 7.7357 - val_accuracy: 0.8202 - val_loss: 0.1725 - val_psnr: 7.8460 - learning_rate: 1.0000e-04
+Epoch 50/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8176 - loss: 0.1754 - psnr: 7.76452024-07-04 18:13:06.092055: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:13:06.092220: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8176 - loss: 0.1754 - psnr: 7.76452024-07-04 18:13:07.224433: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:13:07.224637: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8176 - loss: 0.1754 - psnr: 7.7645 - val_accuracy: 0.8208 - val_loss: 0.1717 - val_psnr: 7.8654 - learning_rate: 1.0000e-04
+Epoch 51/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8176 - loss: 0.1753 - psnr: 7.77012024-07-04 18:13:32.524092: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:13:32.524270: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:13:33.720517: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:13:33.720731: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8176 - loss: 0.1753 - psnr: 7.7701 - val_accuracy: 0.8207 - val_loss: 0.1719 - val_psnr: 7.8603 - learning_rate: 1.0000e-04
+Epoch 52/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8183 - loss: 0.1748 - psnr: 7.78092024-07-04 18:13:59.046434: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:13:59.046589: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:14:00.223825: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:14:00.224017: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8183 - loss: 0.1748 - psnr: 7.7809 - val_accuracy: 0.8206 - val_loss: 0.1720 - val_psnr: 7.8593 - learning_rate: 1.0000e-04
+Epoch 53/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8181 - loss: 0.1748 - psnr: 7.78092024-07-04 18:14:25.301880: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:14:25.302101: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:14:26.505194: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:14:26.505420: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8181 - loss: 0.1748 - psnr: 7.7809 - val_accuracy: 0.8205 - val_loss: 0.1721 - val_psnr: 7.8548 - learning_rate: 1.0000e-04
+Epoch 54/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8183 - loss: 0.1745 - psnr: 7.78732024-07-04 18:14:51.549672: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:14:51.549957: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8183 - loss: 0.1745 - psnr: 7.78732024-07-04 18:14:52.731944: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:14:52.732139: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8183 - loss: 0.1745 - psnr: 7.7873 - val_accuracy: 0.8193 - val_loss: 0.1736 - val_psnr: 7.8113 - learning_rate: 1.0000e-04
+Epoch 55/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8186 - loss: 0.1742 - psnr: 7.79612024-07-04 18:15:18.209185: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:15:18.209370: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:15:19.391970: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:15:19.392203: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8186 - loss: 0.1742 - psnr: 7.7961 - val_accuracy: 0.8213 - val_loss: 0.1712 - val_psnr: 7.8796 - learning_rate: 1.0000e-04
+Epoch 56/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8191 - loss: 0.1736 - psnr: 7.80902024-07-04 18:15:45.243137: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:15:45.243295: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:15:46.368672: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:15:46.368822: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 43ms/step - accuracy: 0.8191 - loss: 0.1736 - psnr: 7.8090 - val_accuracy: 0.8211 - val_loss: 0.1713 - val_psnr: 7.8743 - learning_rate: 1.0000e-04
+Epoch 57/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8192 - loss: 0.1733 - psnr: 7.81702024-07-04 18:16:11.675437: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:16:11.675602: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:16:12.838144: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:16:12.838321: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8192 - loss: 0.1733 - psnr: 7.8170 - val_accuracy: 0.8209 - val_loss: 0.1715 - val_psnr: 7.8673 - learning_rate: 1.0000e-04
+Epoch 58/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8197 - loss: 0.1727 - psnr: 7.83402024-07-04 18:16:38.373829: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:16:38.374019: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8197 - loss: 0.1727 - psnr: 7.83402024-07-04 18:16:39.489397: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:16:39.489627: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8197 - loss: 0.1727 - psnr: 7.8339 - val_accuracy: 0.8219 - val_loss: 0.1703 - val_psnr: 7.9016 - learning_rate: 1.0000e-04
+Epoch 59/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8200 - loss: 0.1724 - psnr: 7.84062024-07-04 18:17:04.754826: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:17:04.755072: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8200 - loss: 0.1724 - psnr: 7.84062024-07-04 18:17:05.928995: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:17:05.929236: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8200 - loss: 0.1724 - psnr: 7.8406 - val_accuracy: 0.8218 - val_loss: 0.1706 - val_psnr: 7.8929 - learning_rate: 1.0000e-04
+Epoch 60/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 39ms/step - accuracy: 0.8197 - loss: 0.1727 - psnr: 7.83442024-07-04 18:17:30.748470: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:17:30.748678: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:17:31.907647: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:17:31.908311: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 41ms/step - accuracy: 0.8197 - loss: 0.1727 - psnr: 7.8344 - val_accuracy: 0.8219 - val_loss: 0.1705 - val_psnr: 7.8957 - learning_rate: 1.0000e-04
+Epoch 61/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8202 - loss: 0.1721 - psnr: 7.84732024-07-04 18:17:57.216168: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:17:57.216338: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:17:58.322794: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:17:58.322978: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8202 - loss: 0.1721 - psnr: 7.8472 - val_accuracy: 0.8221 - val_loss: 0.1702 - val_psnr: 7.9043 - learning_rate: 1.0000e-04
+Epoch 62/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8205 - loss: 0.1720 - psnr: 7.85172024-07-04 18:18:23.644603: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:18:23.644800: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:18:24.808661: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:18:24.808858: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8205 - loss: 0.1720 - psnr: 7.8517 - val_accuracy: 0.8213 - val_loss: 0.1710 - val_psnr: 7.8811 - learning_rate: 1.0000e-04
+Epoch 63/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8204 - loss: 0.1719 - psnr: 7.85352024-07-04 18:18:50.093218: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:18:50.093403: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8204 - loss: 0.1719 - psnr: 7.85352024-07-04 18:18:51.211702: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:18:51.211896: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8204 - loss: 0.1719 - psnr: 7.8535 - val_accuracy: 0.8233 - val_loss: 0.1687 - val_psnr: 7.9453 - learning_rate: 1.0000e-04
+Epoch 64/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8205 - loss: 0.1718 - psnr: 7.85642024-07-04 18:19:16.128523: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:19:16.128802: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:19:17.223242: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:19:17.223425: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 41ms/step - accuracy: 0.8205 - loss: 0.1718 - psnr: 7.8565 - val_accuracy: 0.8222 - val_loss: 0.1699 - val_psnr: 7.9099 - learning_rate: 1.0000e-04
+Epoch 65/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8203 - loss: 0.1722 - psnr: 7.84842024-07-04 18:19:42.250184: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:19:42.250376: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8203 - loss: 0.1722 - psnr: 7.84852024-07-04 18:19:43.410173: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:19:43.410401: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8203 - loss: 0.1722 - psnr: 7.8485 - val_accuracy: 0.8231 - val_loss: 0.1690 - val_psnr: 7.9370 - learning_rate: 1.0000e-04
+Epoch 66/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8212 - loss: 0.1709 - psnr: 7.88112024-07-04 18:20:08.588855: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:20:08.589011: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8212 - loss: 0.1709 - psnr: 7.88102024-07-04 18:20:09.706272: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:20:09.706439: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8212 - loss: 0.1709 - psnr: 7.8810 - val_accuracy: 0.8229 - val_loss: 0.1692 - val_psnr: 7.9317 - learning_rate: 1.0000e-04
+Epoch 67/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8210 - loss: 0.1710 - psnr: 7.87872024-07-04 18:20:35.031704: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:20:35.031888: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8210 - loss: 0.1710 - psnr: 7.87882024-07-04 18:20:36.201453: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:20:36.201629: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8210 - loss: 0.1710 - psnr: 7.8788 - val_accuracy: 0.8232 - val_loss: 0.1686 - val_psnr: 7.9437 - learning_rate: 1.0000e-04
+Epoch 68/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8217 - loss: 0.1703 - psnr: 7.89772024-07-04 18:21:01.345629: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:21:01.345910: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8217 - loss: 0.1703 - psnr: 7.89762024-07-04 18:21:02.477222: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:21:02.477425: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8217 - loss: 0.1703 - psnr: 7.8976 - val_accuracy: 0.8171 - val_loss: 0.1758 - val_psnr: 7.7406 - learning_rate: 1.0000e-04
+Epoch 69/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8216 - loss: 0.1703 - psnr: 7.89802024-07-04 18:21:27.674257: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:21:27.674436: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8216 - loss: 0.1703 - psnr: 7.89802024-07-04 18:21:28.862045: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:21:28.862206: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8216 - loss: 0.1703 - psnr: 7.8980 - val_accuracy: 0.8233 - val_loss: 0.1685 - val_psnr: 7.9482 - learning_rate: 1.0000e-04
+Epoch 70/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8218 - loss: 0.1699 - psnr: 7.90802024-07-04 18:21:54.286731: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:21:54.286942: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8218 - loss: 0.1699 - psnr: 7.90802024-07-04 18:21:55.509016: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:21:55.509219: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8218 - loss: 0.1699 - psnr: 7.9080 - val_accuracy: 0.8239 - val_loss: 0.1680 - val_psnr: 7.9619 - learning_rate: 1.0000e-04
+Epoch 71/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8218 - loss: 0.1700 - psnr: 7.90672024-07-04 18:22:20.557547: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:22:20.557740: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8218 - loss: 0.1700 - psnr: 7.90672024-07-04 18:22:21.719073: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:22:21.719249: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8218 - loss: 0.1700 - psnr: 7.9067 - val_accuracy: 0.8229 - val_loss: 0.1691 - val_psnr: 7.9323 - learning_rate: 1.0000e-04
+Epoch 72/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8223 - loss: 0.1692 - psnr: 7.92532024-07-04 18:22:47.256924: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:22:47.257141: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:22:48.396261: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:22:48.396450: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8223 - loss: 0.1692 - psnr: 7.9253 - val_accuracy: 0.8244 - val_loss: 0.1672 - val_psnr: 7.9847 - learning_rate: 1.0000e-04
+Epoch 73/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8224 - loss: 0.1692 - psnr: 7.92552024-07-04 18:23:13.811037: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:23:13.811202: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:23:14.957690: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:23:14.957871: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8224 - loss: 0.1692 - psnr: 7.9255 - val_accuracy: 0.8240 - val_loss: 0.1676 - val_psnr: 7.9724 - learning_rate: 1.0000e-04
+Epoch 74/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8225 - loss: 0.1690 - psnr: 7.93092024-07-04 18:23:40.473491: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:23:40.473663: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:23:41.618310: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:23:41.618500: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8225 - loss: 0.1690 - psnr: 7.9309 - val_accuracy: 0.8249 - val_loss: 0.1665 - val_psnr: 8.0032 - learning_rate: 1.0000e-04
+Epoch 75/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8231 - loss: 0.1683 - psnr: 7.94802024-07-04 18:24:07.128011: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:24:07.128189: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8231 - loss: 0.1683 - psnr: 7.94802024-07-04 18:24:08.317409: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:24:08.317612: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8231 - loss: 0.1683 - psnr: 7.9480 - val_accuracy: 0.8236 - val_loss: 0.1680 - val_psnr: 7.9603 - learning_rate: 1.0000e-04
+Epoch 76/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8221 - loss: 0.1693 - psnr: 7.92822024-07-04 18:24:33.962140: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:24:33.962315: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8221 - loss: 0.1693 - psnr: 7.92832024-07-04 18:24:35.136008: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:24:35.136188: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 43ms/step - accuracy: 0.8221 - loss: 0.1693 - psnr: 7.9283 - val_accuracy: 0.8236 - val_loss: 0.1678 - val_psnr: 7.9675 - learning_rate: 1.0000e-04
+Epoch 77/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8230 - loss: 0.1679 - psnr: 7.96152024-07-04 18:25:00.401473: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:25:00.401657: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8230 - loss: 0.1679 - psnr: 7.96152024-07-04 18:25:01.579976: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:25:01.580185: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8230 - loss: 0.1679 - psnr: 7.9615 - val_accuracy: 0.8247 - val_loss: 0.1662 - val_psnr: 8.0140 - learning_rate: 1.0000e-04
+Epoch 78/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8233 - loss: 0.1674 - psnr: 7.97502024-07-04 18:25:26.873595: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:25:26.873795: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8233 - loss: 0.1674 - psnr: 7.97502024-07-04 18:25:28.011866: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:25:28.012077: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8233 - loss: 0.1674 - psnr: 7.9749 - val_accuracy: 0.8248 - val_loss: 0.1658 - val_psnr: 8.0268 - learning_rate: 1.0000e-04
+Epoch 79/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8231 - loss: 0.1671 - psnr: 7.98722024-07-04 18:25:53.750672: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:25:53.750992: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8231 - loss: 0.1671 - psnr: 7.98722024-07-04 18:25:54.897482: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:25:54.897699: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 43ms/step - accuracy: 0.8231 - loss: 0.1671 - psnr: 7.9872 - val_accuracy: 0.8235 - val_loss: 0.1662 - val_psnr: 8.0187 - learning_rate: 1.0000e-04
+Epoch 80/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8223 - loss: 0.1670 - psnr: 7.99352024-07-04 18:26:20.096988: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:26:20.097160: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8223 - loss: 0.1670 - psnr: 7.99352024-07-04 18:26:21.236745: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:26:21.236944: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8223 - loss: 0.1670 - psnr: 7.9936 - val_accuracy: 0.8222 - val_loss: 0.1664 - val_psnr: 8.0119 - learning_rate: 1.0000e-04
+Epoch 81/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8223 - loss: 0.1655 - psnr: 8.03862024-07-04 18:26:46.798560: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:26:46.798703: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:26:47.961482: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:26:47.961663: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8223 - loss: 0.1655 - psnr: 8.0386 - val_accuracy: 0.8233 - val_loss: 0.1634 - val_psnr: 8.1061 - learning_rate: 1.0000e-04
+Epoch 82/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8222 - loss: 0.1641 - psnr: 8.08032024-07-04 18:27:13.590965: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:27:13.591147: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:27:14.809827: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:27:14.810005: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8222 - loss: 0.1641 - psnr: 8.0803 - val_accuracy: 0.8225 - val_loss: 0.1630 - val_psnr: 8.1162 - learning_rate: 1.0000e-04
+Epoch 83/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8216 - loss: 0.1636 - psnr: 8.09892024-07-04 18:27:40.157431: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:27:40.157593: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:27:41.347263: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:27:41.347438: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8216 - loss: 0.1636 - psnr: 8.0989 - val_accuracy: 0.8231 - val_loss: 0.1613 - val_psnr: 8.1716 - learning_rate: 1.0000e-04
+Epoch 84/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8217 - loss: 0.1625 - psnr: 8.13182024-07-04 18:28:06.656734: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:28:06.656910: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:28:07.848368: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:28:07.848544: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8217 - loss: 0.1625 - psnr: 8.1318 - val_accuracy: 0.8230 - val_loss: 0.1605 - val_psnr: 8.1970 - learning_rate: 1.0000e-04
+Epoch 85/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8212 - loss: 0.1621 - psnr: 8.14742024-07-04 18:28:33.446713: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:28:33.446899: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8212 - loss: 0.1621 - psnr: 8.14752024-07-04 18:28:34.625015: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:28:34.625211: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8212 - loss: 0.1621 - psnr: 8.1475 - val_accuracy: 0.8223 - val_loss: 0.1602 - val_psnr: 8.2074 - learning_rate: 1.0000e-04
+Epoch 86/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8215 - loss: 0.1609 - psnr: 8.18192024-07-04 18:29:00.354863: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:29:00.355032: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:29:01.474572: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:29:01.475173: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 43ms/step - accuracy: 0.8215 - loss: 0.1609 - psnr: 8.1820 - val_accuracy: 0.8232 - val_loss: 0.1585 - val_psnr: 8.2621 - learning_rate: 1.0000e-04
+Epoch 87/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8212 - loss: 0.1603 - psnr: 8.20232024-07-04 18:29:27.070282: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:29:27.070458: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:29:28.279908: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:29:28.280117: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 43ms/step - accuracy: 0.8212 - loss: 0.1603 - psnr: 8.2023 - val_accuracy: 0.8217 - val_loss: 0.1597 - val_psnr: 8.2236 - learning_rate: 1.0000e-04
+Epoch 88/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8217 - loss: 0.1593 - psnr: 8.23322024-07-04 18:29:53.527216: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:29:53.527499: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:29:54.715666: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:29:54.715869: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8217 - loss: 0.1593 - psnr: 8.2332 - val_accuracy: 0.8231 - val_loss: 0.1571 - val_psnr: 8.3044 - learning_rate: 1.0000e-04
+Epoch 89/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8218 - loss: 0.1586 - psnr: 8.25462024-07-04 18:30:20.226069: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:30:20.226382: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8218 - loss: 0.1586 - psnr: 8.25462024-07-04 18:30:21.359340: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:30:21.359551: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8218 - loss: 0.1586 - psnr: 8.2546 - val_accuracy: 0.8233 - val_loss: 0.1566 - val_psnr: 8.3214 - learning_rate: 1.0000e-04
+Epoch 90/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8219 - loss: 0.1579 - psnr: 8.27542024-07-04 18:30:46.771503: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:30:46.771672: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8219 - loss: 0.1579 - psnr: 8.27542024-07-04 18:30:47.949185: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:30:47.949363: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8219 - loss: 0.1579 - psnr: 8.2753 - val_accuracy: 0.8230 - val_loss: 0.1565 - val_psnr: 8.3250 - learning_rate: 1.0000e-04
+Epoch 91/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8216 - loss: 0.1579 - psnr: 8.28252024-07-04 18:31:13.799221: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:31:13.799414: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:31:15.001679: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:31:15.001965: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 43ms/step - accuracy: 0.8216 - loss: 0.1579 - psnr: 8.2825 - val_accuracy: 0.8217 - val_loss: 0.1575 - val_psnr: 8.2909 - learning_rate: 1.0000e-04
+Epoch 92/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8217 - loss: 0.1572 - psnr: 8.30012024-07-04 18:31:40.523021: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:31:40.523186: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:31:41.652502: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:31:41.652658: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8217 - loss: 0.1572 - psnr: 8.3001 - val_accuracy: 0.8236 - val_loss: 0.1550 - val_psnr: 8.3736 - learning_rate: 1.0000e-04
+Epoch 93/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8224 - loss: 0.1563 - psnr: 8.32782024-07-04 18:32:06.721006: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:32:06.721202: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8224 - loss: 0.1563 - psnr: 8.32782024-07-04 18:32:07.892514: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:32:07.892680: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8224 - loss: 0.1563 - psnr: 8.3277 - val_accuracy: 0.8206 - val_loss: 0.1581 - val_psnr: 8.2735 - learning_rate: 1.0000e-04
+Epoch 94/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8217 - loss: 0.1569 - psnr: 8.31372024-07-04 18:32:33.740082: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:32:33.740337: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:32:34.923748: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:32:34.923966: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 43ms/step - accuracy: 0.8217 - loss: 0.1569 - psnr: 8.3138 - val_accuracy: 0.8241 - val_loss: 0.1538 - val_psnr: 8.4107 - learning_rate: 1.0000e-04
+Epoch 95/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8219 - loss: 0.1561 - psnr: 8.33612024-07-04 18:33:00.529302: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:33:00.529467: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8219 - loss: 0.1561 - psnr: 8.33612024-07-04 18:33:01.738128: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:33:01.738294: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8219 - loss: 0.1561 - psnr: 8.3361 - val_accuracy: 0.8237 - val_loss: 0.1538 - val_psnr: 8.4085 - learning_rate: 1.0000e-04
+Epoch 96/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8219 - loss: 0.1562 - psnr: 8.33072024-07-04 18:33:27.205701: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:33:27.205971: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:33:28.381817: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:33:28.382013: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8219 - loss: 0.1562 - psnr: 8.3307 - val_accuracy: 0.8238 - val_loss: 0.1535 - val_psnr: 8.4203 - learning_rate: 1.0000e-04
+Epoch 97/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8217 - loss: 0.1561 - psnr: 8.33942024-07-04 18:33:54.001560: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:33:54.001726: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8217 - loss: 0.1561 - psnr: 8.33952024-07-04 18:33:55.121779: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:33:55.121992: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8217 - loss: 0.1561 - psnr: 8.3395 - val_accuracy: 0.8226 - val_loss: 0.1552 - val_psnr: 8.3626 - learning_rate: 1.0000e-04
+Epoch 98/100
+623/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8222 - loss: 0.1554 - psnr: 8.35642024-07-04 18:34:20.673535: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:34:20.673735: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 0s 41ms/step - accuracy: 0.8222 - loss: 0.1554 - psnr: 8.35642024-07-04 18:34:21.868607: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:34:21.868782: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8222 - loss: 0.1554 - psnr: 8.3564 - val_accuracy: 0.8240 - val_loss: 0.1531 - val_psnr: 8.4301 - learning_rate: 1.0000e-04
+Epoch 99/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8231 - loss: 0.1539 - psnr: 8.39722024-07-04 18:34:47.294044: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:34:47.294291: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:34:48.500790: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:34:48.500996: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 27s 42ms/step - accuracy: 0.8231 - loss: 0.1539 - psnr: 8.3971 - val_accuracy: 0.8242 - val_loss: 0.1525 - val_psnr: 8.4504 - learning_rate: 1.0000e-04
+Epoch 100/100
+624/625 ━━━━━━━━━━━━━━━━━━━━ 0s 40ms/step - accuracy: 0.8224 - loss: 0.1548 - psnr: 8.37712024-07-04 18:35:13.835683: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:35:13.835850: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+2024-07-04 18:35:15.028151: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:35:15.028356: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+625/625 ━━━━━━━━━━━━━━━━━━━━ 26s 42ms/step - accuracy: 0.8224 - loss: 0.1548 - psnr: 8.3771 - val_accuracy: 0.8246 - val_loss: 0.1518 - val_psnr: 8.4721 - learning_rate: 1.0000e-04
+WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`.
+Mô hình đã được lưu thành công vào autoencoder_model.h5
+1243/1250 ━━━━━━━━━━━━━━━━━━━━ 0s 6ms/step2024-07-04 18:35:39.453566: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+2024-07-04 18:35:39.453787: W tensorflow/core/framework/local_rendezvous.cc:404] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+         [[{{node MultiDeviceIteratorGetNextFromShard}}]]
+         [[RemoteCall]]
+1250/1250 ━━━━━━━━━━━━━━━━━━━━ 8s 6ms/step
+Mean Squared Error (MSE) giữa đầu vào và đầu ra: 0.1508619636297226
+PSNR giữa đầu vào và đầu ra: 8.495820999145508
