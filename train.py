@@ -143,6 +143,10 @@ with strategy.scope():
         print(H_val_real[0, 0, 0, 0])
     # H_train_real float(40000x64x160x2)
     # H_val_real float(5000x64x160x2)
+    # # TODO: GET LESS THAN TRAINING SAMPLES
+    # H_train_real = H_train_real[:5000, :, :, :]
+    # print("\nH_train_real be scaled: ", H_train_real.shape)
+    # print(H_train_real[0, 0, 0, 0])
 
     # TRAINING
     history = autoencoder_model.fit(
