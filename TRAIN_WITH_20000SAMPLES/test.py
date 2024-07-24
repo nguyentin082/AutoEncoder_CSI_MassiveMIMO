@@ -68,7 +68,7 @@ with strategy.scope():
         codeword = autoencoder_model.get_layer('encoder').predict(H_test_real)
 
         # QUANTIZE CODEWORD
-        num_bits = 16
+        num_bits = 7
         quantized_codeword = quantize(codeword, num_bits)
 
         # DEQUANTIZE CODEWORD
